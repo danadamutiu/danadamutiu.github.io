@@ -1,4 +1,5 @@
-document.getElementById("id_logic_version").innerHTML = "Logic version = 2019.10.14.0";
+document.getElementById("id_logic_version").innerHTML = "Logic version = 2019.10.14.1";
+document.getElementById("id_button").addEventListener("click", solve_eq2);
 
 function solve_eq2()
 {
