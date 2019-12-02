@@ -1,4 +1,4 @@
-document.getElementById("id_version").innerHTML = "Version: 2019.12.02.3";
+document.getElementById("id_version").innerHTML = "Version: 2019.12.02.4";
 
 window.addEventListener("touchstart", touch_start_uab);
 window.addEventListener("touchmove", touch_move_uab, {passive:false});
@@ -15,10 +15,10 @@ var last_position = [];
 function get_random_color()
 {
 	var caractere = "0123456789ABCDEF";
-	var sir = "#";
+	var culoare = "#";
 	for(var i = 0; i < 6; i++)
-		culoare += caractere[Math.floor(Math.random() * 16)]; //facem trunchiere sa avem nr intregi(math.floor) ca sa prindem si 0 si 15 (pozitia din caractere) 
-															  //si *16 ca sa prindem si F(pozitia 15)
+		culoare += caractere[Math.floor(Math.random() * 16)];	//facem trunchiere sa avem nr intregi(math.floor) ca sa prindem si 0 si 15 (pozitia din caractere) 
+			return culoare;										//si *16 ca sa prindem si F(pozitia 15)
 }
 
 
