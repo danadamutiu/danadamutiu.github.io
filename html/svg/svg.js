@@ -19,6 +19,7 @@ function deseneaza(unghi_x, unghi_y)
 		//actualizam pozitia cercului (atributele cx si cy)
 	circle.setAttribute("cx", x);
 	circle.setAttribute("cy", y);
+	
 }
 
 
