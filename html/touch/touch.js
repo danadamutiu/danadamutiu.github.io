@@ -39,7 +39,7 @@ function touch_start_uab(p)
 		context.fillStryle = touch_info.color;
 		context.lineWidth = 1;
 		context.fill();
-		context.stroke();
+		context.stroke;
 		
 		last_position.push(touch_info); // am adaugat structura noastra in vector
 			
@@ -69,7 +69,7 @@ function touch_move_uab(p)
 		context.fillStryle = last_position[index_t].color;
 		context.lineWidth = 20;
 		context.fill();
-		context.stroke();
+		context.stroke;
 		
 		last_position[index_t].x = t[i].pageX;
 		last_position[index_t].y = t[i].pageY;
