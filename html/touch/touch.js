@@ -36,7 +36,7 @@ function touch_start_uab(p)
 		context.beginPath();
 		context.arc(t[i].pageX - canvas_rect.left, t[i].pageY - canvas_rect.top, 10, 0, 2 * Math.PI);
 		context.strokeStyle = touch_info.color;
-		context.fillStryle = touch_info.color;
+		context.fillStyle = touch_info.color;
 		context.lineWidth = 1;
 		context.fill();
 		context.stroke();
@@ -66,7 +66,7 @@ function touch_move_uab(p)
 		context.moveTo(last_position[index_t].x - canvas_rect.left, last_position[index_t].y - canvas_rect.top);
 		context.lineTo(t[i].pageX - canvas_rect.left, t[i].pageY - canvas_rect.top);
 		context.strokeStyle = last_position[index_t].color;
-		context.fillStryle = last_position[index_t].color;
+		context.fillStyle = last_position[index_t].color;
 		context.lineWidth = 20;
 		context.fill();
 		context.stroke();
