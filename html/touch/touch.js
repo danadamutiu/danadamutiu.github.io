@@ -69,8 +69,8 @@ function touch_move_uab(p)
 		context.fill();
 		context.stroke();
 		
-		last_position.push[index_t].x = t[i].pageX;
-		last_position.push[index_t].y = t[i].pageY;
+		last_position[index_t].x = t[i].pageX;
+		last_position[index_t].y = t[i].pageY;
 		
 	}
 }
