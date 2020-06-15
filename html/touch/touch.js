@@ -14,11 +14,8 @@ var last_position = [];
 
 function get_random_color()
 {
-	var caractere = "0123456789ABCDEF";
-	var culoare = "#";
-	for(var i = 0; i < 6; i++)
-		culoare += caractere[Math.floor(Math.random() * 16)];	//facem trunchiere sa avem nr intregi(math.floor) ca sa prindem si 0 si 15 (pozitia din caractere) 
-			return culoare;										//si *16 ca sa prindem si F(pozitia 15)
+	var colors = ['#d11717', '#0cc90f', '#1a10e0'];
+	return colors[Math.round(Math.random() * colors.length)]
 }
 
 
