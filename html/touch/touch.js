@@ -1,4 +1,4 @@
-document.getElementById("id_version").innerHTML = "Version: 2019.12.02.4";
+document.getElementById("id_version").innerHTML = "Data: 2020.06.16";
 
 window.addEventListener("touchstart", touch_start_uab);
 window.addEventListener("touchmove", touch_move_uab, {passive:false});
