@@ -1,4 +1,5 @@
 # danadamutiu.github.io
-scoala
-see if i can push
-can i push again ?
+### Aplicatie ce numara pasii
+
+O aplicatie simpla ce foloseste giroscopul din telefon pentru a numara pasii facuti de utilizator.
+Functioneaza doar pe telefon mobil.
