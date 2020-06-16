@@ -25,7 +25,7 @@ startButton.click(function (event) {
         $(this).html("Stop")
     } else {
         console.log("stopped");
-        window.removeEventListener("devicemotion", function(){console.log("removed event")}, true)
+        window.removeEventListener("devicemotion", onMotionEvent);
         $(this).attr('data-state', 'start');
         trackInfo.html("Pasii nu sunt numarati");
         $(this).html("Start")
@@ -33,7 +33,9 @@ startButton.click(function (event) {
 });
 
 function onMotionEvent(event) {
-    steps.currentSteps = steps.currentSteps + 1;
-    stepsNumber.html(steps.currentSteps);
+    if (event.accelerator.x > 800) {
+        steps.currentSteps = steps.currentSteps + 1;
+        stepsNumber.html(steps.currentSteps);
+    }
 }
 
