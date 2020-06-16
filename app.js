@@ -5,7 +5,7 @@ var stepsNumber = $('#steps-number');
 var resetButton = $('#reset');
 var startButton = $('#start');
 
-stepsNumber.innerHTML(steps.currentSteps);
+stepsNumber.html(steps.currentSteps);
 
 resetButton.click(function() {
     steps.currentSteps = 0;
