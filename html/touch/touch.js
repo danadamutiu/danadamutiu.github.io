@@ -14,7 +14,7 @@ var last_position = [];
 
 function get_color()
 {
-	var colors = ['#d11717', '#fffb03', '#1a10e0'];
+	var colors = ['#d11717', '#f5f107', '#1a10e0'];
 	return colors[Math.round(Math.random() * colors.length)]
 }
 
