@@ -33,7 +33,7 @@ startButton.click(function (event) {
 });
 
 function onMotionEvent(event) {
-    if (event.accelerator.x > 800) {
+    if (event.acceleration.x > 800) {
         steps.currentSteps = steps.currentSteps + 1;
         stepsNumber.html(steps.currentSteps);
     }
