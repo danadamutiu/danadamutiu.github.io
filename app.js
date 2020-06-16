@@ -7,10 +7,11 @@ var startButton = $('#start');
 var trackInfo = $('#track-info');
 
 stepsNumber.html(steps.currentSteps);
-trackInfo.html("Pasi nu sunt numarati");
+trackInfo.html("Pasii nu sunt numarati");
 
 resetButton.click(function() {
     steps.currentSteps = 0;
+    stepsNumber.html(steps.currentSteps);
 });
 
 startButton.click(function (event) {
@@ -19,19 +20,20 @@ startButton.click(function (event) {
     if (state === 'start') {
         console.log("started");
         window.addEventListener("devicemotion", onMotionEvent, true);
-        trackInfo.html("Pasi sunt numarati");
+        trackInfo.html("Pasii sunt numarati");
         $(this).attr('data-state', 'stop');
         $(this).html("Stop")
     } else {
         console.log("stopped");
         window.removeEventListener("devicemotion", function(){console.log("removed event")}, true)
         $(this).attr('data-state', 'start');
-        trackInfo.html("Pasi nu sunt numarati");
+        trackInfo.html("Pasii nu sunt numarati");
         $(this).html("Start")
     }
 });
 
 function onMotionEvent(event) {
-    steps.currentSteps = steps.currentSteps + 1;
+    steps.currentSteps = 0;
+    stepsNumber.html(steps.currentSteps);
 }
 
