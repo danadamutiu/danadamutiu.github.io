@@ -33,7 +33,7 @@ startButton.click(function (event) {
 });
 
 function onMotionEvent(event) {
-    if (parseFloat(event.accelerationIncludingGravity.z) > parseFloat(1)) {
+    if (event.accelerationIncludingGravity.z > 1 && event.accelerationIncludingGravity.z < 2) {
         steps.currentSteps = steps.currentSteps + 1;
         stepsNumber.html(steps.currentSteps);
     }
