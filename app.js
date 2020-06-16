@@ -14,16 +14,20 @@ resetButton.click(function() {
 });
 
 startButton.click(function (event) {
-    var state = $(this).attr('state');
+    var state = $(this).attr('data-state');
 
     if (state === 'start') {
+        console.log("started");
         window.addEventListener("devicemotion", onMotionEvent, true);
         trackInfo.html("Pasi sunt numarati");
-        $(this).attr('state', 'stop');
+        $(this).attr('data-state', 'stop');
+        $(this).html("Stop")
     } else {
+        console.log("stopped");
         window.removeEventListener("devicemotion", function(){console.log("removed event")}, true)
-        $(this).attr('state', 'start');
+        $(this).attr('data-state', 'start');
         trackInfo.html("Pasi nu sunt numarati");
+        $(this).html("Start")
     }
 });
 
