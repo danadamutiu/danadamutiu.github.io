@@ -2,16 +2,18 @@
 <html>
     <head>
         <title>Steps Counter</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="stylesheet" href="app.css"/>
     </head>
     <body>
-        <div class="container">
-            <div class="row">
+        <div class="container h-100">
+            <div class="row h-100 text-center align-items-center">
                 <div class="col-12">
-                    <h3 id="steps-number">0</h3>
-                    <button id="reset" class="btn btn-warning">Reset</button>
-                    <button id="start" class="btn btn-success">Start</button>
+                    <h1 class="mb-5" id="steps-number"></h1>
+                    <button id="reset" class="btn btn-warning mr-1">Reset</button>
+                    <button data-state="start" id="start" class="btn btn-success ml-1">Start</button>
                 </div>
             </div>
         </div>
