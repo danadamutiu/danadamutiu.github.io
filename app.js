@@ -19,13 +19,13 @@ startButton.click(function (event) {
 
     if (state === 'start') {
         console.log("started");
-        window.addEventListener("devicemotion", onMotionEvent, true);
+        window.addEventListener("devicemotion", onMotionEvent, false);
         trackInfo.html("Pasii sunt numarati");
         $(this).attr('data-state', 'stop');
         $(this).html("Stop")
     } else {
         console.log("stopped");
-        window.removeEventListener("devicemotion", onMotionEvent);
+        window.removeEventListener("devicemotion", onMotionEvent, false);
         $(this).attr('data-state', 'start');
         trackInfo.html("Pasii nu sunt numarati");
         $(this).html("Start")
@@ -33,7 +33,7 @@ startButton.click(function (event) {
 });
 
 function onMotionEvent(event) {
-    if (event.acceleration.x > 0.4) {
+    if (event.acceleration.z > 0.4) {
         steps.currentSteps = steps.currentSteps + 1;
         stepsNumber.html(steps.currentSteps);
     }
