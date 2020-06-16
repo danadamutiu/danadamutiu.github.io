@@ -4,6 +4,7 @@ var steps = {
 var stepsNumber = $('#steps-number');
 var resetButton = $('#reset');
 var startButton = $('#start');
+var trackInfo = $('#track-info');
 
 stepsNumber.html(steps.currentSteps);
 
@@ -18,8 +19,8 @@ startButton.click(function (event) {
         window.addEventListener("devicemotion", onMotionEvent, true);
         $(this).attr('state', 'stop');
     } else {
-        $(this).attr('state', 'start');
         window.removeEventListener("devicemotion", function(){console.log("removed event")}, true)
+        $(this).attr('state', 'start');
     }
 });
 
