@@ -33,7 +33,7 @@ startButton.click(function (event) {
 });
 
 function onMotionEvent(event) {
-    steps.currentSteps = 0;
+    steps.currentSteps = steps.currentSteps + 1;
     stepsNumber.html(steps.currentSteps);
 }
 
