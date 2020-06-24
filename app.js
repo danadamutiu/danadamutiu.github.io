@@ -1,49 +1,90 @@
-var steps = {
-    currentSteps: 0 // obiectul model de stepts salvat in variabila
-};
+window.addEventListener("touchstart", touch_start);
+window.addEventListener("touchmove", touch_move, {passive:false});
+window.addEventListener("touchend", touch_end);
 
-// salvam referinte la element Html cu Jquery (echivalentul lui document.getElementById)
-var stepsNumber = $('#steps-number');
-var resetButton = $('#reset');
-var startButton = $('#start');
-var trackInfo = $('#track-info'); // mesaju cu pasii sunt sau nu numarati
+var canvas = document.getElementById("id_canvas");
+var context = canvas.getContext("2d");
 
-stepsNumber.html(steps.currentSteps); // initializezi elementu are arata numaru cu valoarea 0
-trackInfo.html("Pasii nu sunt numarati"); // initializaeaza textu cu valoarea initiala "pasii nu sunt num"
+var canvas_rect = canvas.getBoundingClientRect();
 
-// eveniment atasat la butonul Reset (cand se da click)
-resetButton.click(function() {
-    steps.currentSteps = 0;
-    stepsNumber.html(steps.currentSteps); // si il seteaza si la html ca sa apara si p telefon
-});
+var last_position = [];
 
-// eveniment atasat la butonul Start/Stop (cand se da click)
-startButton.click(function (event) {
-    var state = $(this).attr('data-state');
 
-    if (state === 'start') {
-        console.log("started");
-        // atasare eveniment
-        window.addEventListener("devicemotion", onMotionEvent, false); // si aici asculta eventlistener functia onMtionEvent pasata ca parametru la eventListener
-        trackInfo.html("Pasii sunt numarati");
-        $(this).attr('data-state', 'stop'); // seteaza internal state pt butonu de stop
-        $(this).html("Stop")
-    } else { // pana aici pt start si de aici in jos pt stop
-        console.log("stopped");
-        // deatasare eveniment
-        window.removeEventListener("devicemotion", onMotionEvent, false); // nu mai asculta evnetlisteneru
-        $(this).attr('data-state', 'start');  // seteaza internal state pt butonu de stop
-        trackInfo.html("Pasii nu sunt numarati");
-        $(this).html("Start")
-    }
-});
-
-// functie de tip callback pentru evenimentul "devicemotion"
-function onMotionEvent(event) {
-    // o implementare simpla - se poate calcula cu o anumita formula
-    if (event.accelerationIncludingGravity.z > 0.7 && event.accelerationIncludingGravity.z < 2) { // 0.7 si 2 is m/s
-        steps.currentSteps = steps.currentSteps + 1;
-        stepsNumber.html(steps.currentSteps);
-    }
+function get_color()
+{
+	var colors = ['#d11717', '#f5f107', '#1a10e0'];
+	return colors[Math.round(Math.random() * colors.length)]
 }
 
+
+function touch_start(p) 
+{
+	var t = p.changedTouches; //lista degetelor care incep apasarea pe ecran
+	for (var i = 0; i < t.length; i++)
+	{
+		var touch_info = {};
+		touch_info.x = t[i].pageX;
+		touch_info.y = t[i].pageY;
+		touch_info.id = t[i].identifier;
+		touch_info.color = get_color();
+		
+		context.beginPath();
+		context.arc(t[i].pageX - canvas_rect.left, t[i].pageY - canvas_rect.top, 10, 0, 2 * Math.PI);
+		context.strokeStyle = touch_info.color;
+		context.fillStyle = touch_info.color;
+		context.lineWidth = 1;
+		context.fill();
+		context.stroke();
+		
+		last_position.push(touch_info); // am adaugat structura noastra in vector
+			
+	}
+}
+
+
+function touch_move(p) 
+{
+	p.preventDefault();
+	
+	var t = p.changedTouches; //lista degetelor care se misca p ecran
+	for (var i = 0; i < t.length; i++)
+	{
+		var index_t = -1;
+		for (var j = 0; j < last_position.length; j++)
+			if (last_position[j].id == t[i].identifier)
+			{
+				index_t = j;
+				break;
+			}
+			
+		context.beginPath();
+		context.moveTo(last_position[index_t].x - canvas_rect.left, last_position[index_t].y - canvas_rect.top);
+		context.lineTo(t[i].pageX - canvas_rect.left, t[i].pageY - canvas_rect.top);
+		context.strokeStyle = last_position[index_t].color;
+		context.fillStyle = last_position[index_t].color;
+		context.lineWidth = 20;
+		context.fill();
+		context.stroke();
+		
+		last_position[index_t].x = t[i].pageX;
+		last_position[index_t].y = t[i].pageY;
+		
+	}
+}
+
+
+function touch_end(p)  
+{
+	var t = p.changedTouches; //lista degetelor care s`au ridicat dp ecran
+	for (var i = 0; i < t.length; i++)
+	{
+		var index_t = -1;
+		for (var j = 0; j < last_position.length; j++)
+			if (last_position[j].id == t[i].identifier)
+			{
+				index_t = j;
+				break;
+			}
+			last_position.splice(index_t, 1);
+	}		
+}
